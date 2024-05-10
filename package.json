@@ -2,13 +2,13 @@
   "id": "qd-wakeLock",
   "displayName": "qd-wakeLock",
   "version": "1.0.0",
-  "description": "qd-wakeLock",
+  "description": "uni-app 的 UTS 插件，WakeLock是Android框架层提供的一套机制，应用使用该机制可以达到控制Android设备状态的目的。这里的设备状态主要指屏幕的打开关闭，cpu的保持运行。",
   "keywords": [
-    "qd-wakeLock"
+    "uts,uniapp,wakeLock,电源锁"
 ],
-  "repository": "",
+  "repository": "https://github.com/China-quanda/qd-wakeLock",
   "engines": {
-    "HBuilderX": "^3.6.8"
+    "HBuilderX": "^4.08"
   },
   "dcloudext": {
     "type": "uts",
@@ -21,12 +21,12 @@
       }
     },
     "contact": {
-      "qq": ""
+      "qq": "877880098"
     },
     "declaration": {
-      "ads": "",
-      "data": "",
-      "permissions": ""
+      "ads": "无",
+      "data": "插件不采集任何数据",
+      "permissions": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />"
     },
     "npmurl": ""
   },
@@ -35,17 +35,19 @@
     "encrypt": [],
     "platforms": {
       "cloud": {
-        "tcb": "u",
-        "aliyun": "u",
-        "alipay": "u"
+        "tcb": "y",
+        "aliyun": "y",
+        "alipay": "y"
       },
       "client": {
         "Vue": {
-          "vue2": "u",
-          "vue3": "u"
+          "vue2": "y",
+          "vue3": "y"
         },
         "App": {
-          "app-android": "u",
+          "app-android": {
+            "minVersion": "21"
+        },
           "app-ios": "u"
         },
         "H5-mobile": {
