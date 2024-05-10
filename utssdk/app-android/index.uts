@@ -1,0 +1,34 @@
+import Context from "android.content.Context";
+import { UTSAndroid } from "io.dcloud.uts";
+import PowerManager from 'android.os.PowerManager';
+
+let wakelock : PowerManager.WakeLock | null = null;
+
+/**开启WakeLock锁
+ * 在Android中，WakeLock是一种锁定CPU运行的机制，使得即使屏幕变暗或手机进入休眠状态，应用程序也能够继续运行。
+ */
+export const acquireWakeLock = () : void => {
+	// 获取PowerManager对象
+	const powerManager = UTSAndroid.getAppContext()!.getSystemService(Context.POWER_SERVICE) as PowerManager;
+	// 创建WakeLock锁实例
+	wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, 'SILIAN_APP');
+	// 申请开启WakeLock  在屏幕休眠的状态下唤醒屏幕
+	wakelock!.acquire();
+}
+/**
+ * 释放WakeLock锁
+ */
+export const releaseWakeLock = () : void => {
+	if (wakelock === null) return;
+	// 释放WakeLock锁 在屏幕点亮的状态下，使屏幕休眠。
+	wakelock?.release();
+	wakelock = null;
+}
+/**
+ * 判断是否打开锁
+ * @return {Boolean} 是否打开锁
+ */
+export const isOpenWakeLock = () : boolean => {
+	if (wakelock === null) return false;
+	return wakelock!.isHeld();
+}
